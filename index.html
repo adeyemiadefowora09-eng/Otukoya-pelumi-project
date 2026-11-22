@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Hostel Allocation Management System</title>
+<style>
+:root{
+  --bg:#ffffff;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--soft:#f9fafb;
+  --accent:#2563eb;--accent-soft:#eff6ff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:5}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;font-size:18px;display:flex;gap:8px;align-items:center}
+.logo span{background:var(--accent);color:#fff;border-radius:8px;width:28px;height:28px;display:grid;place-items:center;font-size:15px}
+.links{display:flex;gap:22px;align-items:center;font-size:15px;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:11px 20px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid var(--accent)}
+.btn:hover{background:#1d4ed8}
+.btn.ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{background:var(--soft)}
+.hero{padding:84px 0 64px;text-align:center}
+.tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;margin-bottom:20px}
+h1{font-size:clamp(32px,6vw,54px);line-height:1.1;margin:0 auto 18px;max-width:760px;letter-spacing:-.02em}
+.lead{color:var(--muted);font-size:18px;max-width:600px;margin:0 auto 30px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:56px 0 0}
+.stat{border:1px solid var(--line);border-radius:14px;padding:20px}
+.stat b{display:block;font-size:28px;color:var(--accent)}
+.stat small{color:var(--muted)}
+section{padding:64px 0}
+section.alt{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(26px,4vw,34px);margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 36px;max-width:560px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+.card .ic{font-size:26px;margin-bottom:10px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.step{display:flex;gap:16px}
+.num{flex:none;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700}
+.roles .card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.cta-box{background:var(--accent);color:#fff;border-radius:18px;padding:48px 24px;text-align:center}
+.cta-box h2{color:#fff}
+.cta-box p{margin:0 auto 24px;max-width:480px;opacity:.9}
+.cta-box .btn{background:#fff;color:var(--accent);border-color:#fff}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px;text-align:center}
+@media(max-width:640px){.links a.hide{display:none}.hero{padding:56px 0 40px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top"><span>H</span>HostelAlloc</a>
+      <div class="links">
+        <a class="hide" href="#features">Features</a>
+        <a class="hide" href="#how">How it works</a>
+        <a class="hide" href="#roles">Roles</a>
+        <a class="btn" href="#get-started">Get started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <span class="tag">Hostel accommodation, simplified</span>
+    <h1>Allocate hostel rooms fairly, quickly and without double bookings</h1>
+    <p class="lead">One platform where students apply for a bed space and administrators manage hostels, rooms and allocations in real time.</p>
+    <div class="cta">
+      <a class="btn" href="#get-started">Apply for a room</a>
+      <a class="btn ghost" href="#features">See features</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>0</b><small>Double bookings</small></div>
+      <div class="stat"><b>24/7</b><small>Online applications</small></div>
+      <div class="stat"><b>Live</b><small>Bed availability</small></div>
+      <div class="stat"><b>3</b><small>User roles</small></div>
+    </div>
+  </div>
+
+  <section id="features" class="alt">
+    <div class="wrap">
+      <h2>Everything you need to run a hostel</h2>
+      <p class="sub">From the first application to checkout, every step lives in one place.</p>
+      <div class="grid">
+        <div class="card"><div class="ic">📝</div><h3>Online applications</h3><p>Students register, pick a preferred hostel and track their application status from any device.</p></div>
+        <div class="card"><div class="ic">🛏️</div><h3>Live room availability</h3><p>See which hostels, rooms and beds are free right now, with capacity and price per room.</p></div>
+        <div class="card"><div class="ic">⚙️</div><h3>Smart allocation</h3><p>Allocate manually or automatically, with gender and capacity rules enforced for you.</p></div>
+        <div class="card"><div class="ic">💳</div><h3>Payment tracking</h3><p>Record and verify hostel fees, and issue receipts to students.</p></div>
+        <div class="card"><div class="ic">🛠️</div><h3>Complaints and maintenance</h3><p>Residents report issues and wardens follow them through to resolution.</p></div>
+        <div class="card"><div class="ic">📊</div><h3>Reports and records</h3><p>Occupancy reports and a full audit trail of every allocation and change.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="sub">Three simple steps from application to move-in.</p>
+      <div class="grid">
+        <div class="step"><div class="num">1</div><div><h3 style="margin:0 0 4px">Register and apply</h3><p style="margin:0;color:var(--muted)">Create an account, complete your profile and submit a hostel application.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3 style="margin:0 0 4px">Get approved</h3><p style="margin:0;color:var(--muted)">Administrators review your application and confirm your payment.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3 style="margin:0 0 4px">Receive your bed</h3><p style="margin:0;color:var(--muted)">See your room, bed and roommates, then move in.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles" class="alt roles">
+    <div class="wrap">
+      <h2>Built for everyone involved</h2>
+      <p class="sub">Each role sees only what it needs.</p>
+      <div class="grid">
+        <div class="card"><h3>Student</h3><ul><li>Apply and track status</li><li>View room and roommates</li><li>Pay fees and submit complaints</li></ul></div>
+        <div class="card"><h3>Hostel manager</h3><ul><li>Manage rooms and beds</li><li>Approve and allocate students</li><li>Handle maintenance requests</li></ul></div>
+        <div class="card"><h3>Super admin</h3><ul><li>Manage hostels and users</li><li>Configure allocation rules</li><li>View reports and audit logs</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="get-started">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2>Ready to get your hostel space?</h2>
+        <p>Applications are open. Create your account and submit your request in minutes.</p>
+        <a class="btn" href="#top">Create an account</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Hostel Allocation Management System. All rights reserved.</div>
+</footer>
+</body>
+</html>
