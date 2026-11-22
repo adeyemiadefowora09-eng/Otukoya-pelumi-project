@@ -1,0 +1,9 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="color-scheme" content="light"><title>Hostels – HostelAlloc</title><link rel="stylesheet" href="style.css"></head><body><header id="hd"></header>
+<main class="wrap pg"><h1 style="margin:0 0 8px;max-width:none;font-size:clamp(28px,5vw,38px)">Hostels</h1><p class="sub">Live bed availability across all hostels.</p>
+<div style="max-width:220px;margin-bottom:20px"><select id="fl" aria-label="Filter"><option>All</option><option>Male</option><option>Female</option></select></div>
+<div class="grid" id="g"></div></main>
+<footer id="ft"></footer><script src="app.js"></script>
+<script>
+function draw(t){g.innerHTML=H.filter(h=>t==='All'||h.type===t).map(h=>{const n=used(h.id),T=total(h);return '<div class="card"><div class="row"><h3>'+h.name+'</h3><span class="badge">'+h.type+'</span></div><p class="m">'+h.cap+' beds per room · '+money(h.price)+' / session</p><div class="bar"><i style="width:'+Math.round(n/T*100)+'%"></i></div><p class="m"><b>'+(T-n)+'</b> of '+T+' beds free</p><a class="btn ghost sm" href="dashboard.html">Apply</a></div>'}).join('')}
+fl.onchange=()=>draw(fl.value);draw('All');
+</script></body></html>

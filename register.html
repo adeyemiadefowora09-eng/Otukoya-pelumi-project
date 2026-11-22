@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="color-scheme" content="light"><title>Register – HostelAlloc</title><link rel="stylesheet" href="style.css"></head><body><header id="hd"></header>
+<main class="auth"><div class="side"><h2>Get your hostel space</h2><p>Create a student account and apply in minutes.</p><ul><li>Free to register</li><li>Choose from available hostels</li><li>Know your bed number as soon as you’re approved</li></ul></div>
+<div class="fs"><form id="f" class="box"><h2>Create account</h2><p class="m">Student registration.</p>
+<label for="nm">Full name</label><input id="nm" required>
+<label for="mt">Matric number</label><input id="mt" placeholder="e.g. CSC/21/001" required>
+<label for="gd">Gender</label><select id="gd"><option>Male</option><option>Female</option></select>
+<label for="em">Email</label><input id="em" type="email" required>
+<label for="pw">Password</label><input id="pw" type="password" minlength="8" placeholder="At least 8 characters" required>
+<p class="err" id="msg" role="alert"></p>
+<button class="btn w">Create account</button>
+<p class="m" style="text-align:center;margin-top:18px">Already registered? <a href="login.html" style="color:var(--ac);font-weight:600">Log in</a></p></form></div></main>
+<footer id="ft"></footer><script src="app.js"></script>
+<script>
+f.onsubmit=e=>{e.preventDefault();const U=users(),m=em.value.trim().toLowerCase();if(U.some(u=>u.email===m)){msg.textContent='That email is already registered.';return}const u={id:Date.now(),name:nm.value.trim(),matric:mt.value.trim(),gender:gd.value,email:m,pw:pw.value,role:'student'};U.push(u);db.set('users',U);db.set('me',u.id);location.href='dashboard.html'};
+</script></body></html>

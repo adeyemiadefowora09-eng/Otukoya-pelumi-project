@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="color-scheme" content="light"><title>Dashboard – HostelAlloc</title><link rel="stylesheet" href="style.css"></head><body><header id="hd"></header>
+<main class="wrap pg"><h1 id="hi" style="margin:0 0 24px;max-width:none;font-size:clamp(26px,5vw,36px)"></h1><div class="grid" id="d"></div></main>
+<footer id="ft"></footer><script src="app.js"></script>
+<script>
+const u=guard('student');
+function render(){
+const a=apps().find(x=>x.uid===u.id&&x.status!=='Cancelled');
+hi.textContent='Hello, '+u.name.split(' ')[0]+' 👋';
+let s='<div class="card"><h3>Your profile</h3><p class="m">'+u.name+'<br>'+(u.matric||'—')+' · '+u.gender+'<br>'+u.email+'</p></div>';
+if(!a){const o=H.filter(h=>h.type===u.gender&&total(h)>used(h.id));
+s+='<div class="card"><h3>Apply for a room</h3>'+(o.length?'<label for="ph">Preferred hostel</label><select id="ph">'+o.map(h=>'<option value="'+h.id+'">'+h.name+' ('+money(h.price)+')</option>').join('')+'</select><button class="btn" style="margin-top:16px" onclick="apply()">Submit application</button>':'<p class="m">No hostels with free beds are available for you right now.</p>')+'</div>'}
+else{const h=H.find(x=>x.id===a.hid);
+s+='<div class="card"><h3>Application status</h3><span class="badge '+a.status+'">'+a.status+'</span><p class="m">'+h.name+'<br>Applied '+a.date+'</p>'+(a.status!=='Approved'?'<button class="btn ghost sm" onclick="cancel()">'+(a.status==='Pending'?'Cancel application':'Apply again')+'</button>':'')+'</div>';
+if(a.status==='Approved')s+='<div class="card hl"><h3>Your allocation</h3><p class="big">Room '+a.room+', Bed '+a.bed+'</p><p class="m">'+h.name+' · '+money(h.price)+' / session</p></div>'}
+d.innerHTML=s}
+function apply(){const A=apps();A.push({id:Date.now(),uid:u.id,name:u.name,matric:u.matric,hid:+ph.value,status:'Pending',date:new Date().toLocaleDateString()});db.set('apps',A);render()}
+function cancel(){const A=apps();A.forEach(x=>{if(x.uid===u.id&&x.status!=='Approved')x.status='Cancelled'});db.set('apps',A);render()}
+if(u)render();
+</script></body></html>

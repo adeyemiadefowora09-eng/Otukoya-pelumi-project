@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="color-scheme" content="light"><title>Log in – HostelAlloc</title><link rel="stylesheet" href="style.css"></head><body><header id="hd"></header>
+<main class="auth"><div class="side"><h2>Welcome back</h2><p>Log in to apply for a room, track your allocation or manage hostels.</p><ul><li>Track your application in real time</li><li>See your room and bed number</li><li>Admins approve and allocate in one click</li></ul></div>
+<div class="fs"><form id="f" class="box"><h2>Log in</h2><p class="m">Enter your details to continue.</p>
+<label for="em">Email</label><input id="em" type="email" autocomplete="email" required>
+<label for="pw">Password</label><div class="pwr"><input id="pw" type="password" autocomplete="current-password" required><button type="button" id="tp">Show</button></div>
+<p class="err" id="msg" role="alert"></p>
+<button class="btn w">Log in</button>
+<div class="demo"><button type="button" class="btn ghost sm" onclick="demo('student')">Demo student</button><button type="button" class="btn ghost sm" onclick="demo('admin')">Demo admin</button></div>
+<p class="m" style="text-align:center;margin-top:18px">New here? <a href="register.html" style="color:var(--ac);font-weight:600">Create an account</a></p></form></div></main>
+<footer id="ft"></footer><script src="app.js"></script>
+<script>
+f.onsubmit=e=>{e.preventDefault();const u=login(em.value,pw.value);if(!u){msg.textContent='Incorrect email or password.';return}location.href=u.role==='admin'?'admin.html':'dashboard.html'};
+function demo(r){em.value=r+'@demo.com';pw.value='demo1234'}
+tp.onclick=()=>{pw.type=pw.type==='password'?'text':'password';tp.textContent=pw.type==='password'?'Show':'Hide'};
+</script></body></html>
